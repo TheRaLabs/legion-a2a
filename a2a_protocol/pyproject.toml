@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "a2a-protocol"
+version = "0.1.0"
+description = "Agent to Agent Protocol Specification Python models"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Legion Team", email = "example@example.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pydantic>=2.0.0",
+    "dataclasses"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/TheRaLabs/legion-a2a"
+"Bug Tracker" = "https://github.com/TheRaLabs/legion-a2a/issues"
+
+[tool.hatch.build]
+exclude = [
+  "original/",
+  "**/__pycache__",
+  "**/.pytest_cache",
+] 

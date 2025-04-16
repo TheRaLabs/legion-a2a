@@ -1,12 +1,57 @@
+[build-system]
+requires = ["hatchling>=1.0.0"]
+build-backend = "hatchling.build"
+
 [project]
-name = "agent2agent-protocol"
+name = "legion-a2a"
 version = "0.1.0"
-description = "Add your description here"
+description = "Agent to Agent Protocol Specification"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
-
-[dependency-groups]
-dev = [
-    "datamodel-code-generator>=0.28.5",
+license = {text = "MIT"}
+authors = [
+    {name = "Legion Team", email = "example@example.com"}
 ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "a2a-protocol>=0.1.1"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/TheRaLabs/legion-a2a"
+"Bug Tracker" = "https://github.com/TheRaLabs/legion-a2a/issues"
+"Documentation" = "https://github.com/TheRaLabs/legion-a2a#readme"
+
+# Development environment
+[tool.hatch.envs.dev]
+dependencies = [
+    "datamodel-code-generator>=0.28.5",
+    "build>=1.0.0",
+    "twine>=4.0.0",
+    "pytest>=7.0.0"
+]
+
+# Direct PEP 625 configuration
+[tool.hatch.build]
+exclude = [
+  "a2a_protocol/",
+  "**/__pycache__",
+  "**/.pytest_cache",
+  "**/.venv",
+]
+
+[tool.hatch.build.targets.wheel]
+only-packages = true
+packages = ["legion_a2a"]
+
+# Individual subpackage reference
+[tool.hatch.metadata]
+allow-direct-references = true
+
+# Setuptools compatibility (deprecated but included for reference)
+[tool.setuptools]
+packages = ["legion_a2a"]
