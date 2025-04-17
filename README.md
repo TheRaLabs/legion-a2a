@@ -7,14 +7,12 @@ Legion A2A is an implementation of the Agent to Agent Protocol, providing tools 
 This is a monorepo containing:
 
 - `a2a-protocol`: Core protocol models and specifications (in `a2a_protocol/`)
-- `legion-a2a`: High-level client implementations and utilities
+
+For detailed information about the protocol, please see the [a2a_protocol/README.md](a2a_protocol/README.md).
 
 ## Installation
 
 ```bash
-# Install the main package (includes the a2a-protocol dependency)
-pip install legion-a2a
-
 # Or install just the protocol models
 pip install a2a-protocol
 ```
@@ -22,17 +20,6 @@ pip install a2a-protocol
 ## Usage
 
 ```python
-from legion_a2a.client import A2AClient
-
-# Create a client
-client = A2AClient(endpoint="https://your-a2a-endpoint.com", api_key="your-api-key")
-
-# Create a simple text message
-message = client.create_text_message(
-    text="Hello, agent!",
-    metadata={"session_id": "12345"}
-)
-
 # Work directly with the protocol models
 from a2a_protocol.pydantic_v2 import Message, Part, TextPart, Role
 
@@ -63,6 +50,26 @@ cd legion-a2a
 
 # Install in development mode
 pip install -e .
+```
+
+## Publishing to PyPI
+
+To publish the a2a-protocol package to PyPI:
+
+```bash
+# Navigate to the protocol directory
+cd a2a_protocol
+
+# Remove old build and build the package
+rm -rf dist build && python -m build
+
+# Upload to PyPI
+python -m twine upload dist/*
+```
+
+Make sure you have the required dependencies installed:
+```bash
+pip install build twine
 ```
 
 ## License
